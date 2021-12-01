@@ -1,0 +1,25 @@
+plugins {
+    id 'org.springframework.boot' version '2.6.1'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+    id "io.freefair.lombok" version "6.3.0"
+}
+
+group 'com.omarassadi'
+version '1.0.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-aop'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.mockito:mockito-core:4.1.0'
+    implementation 'one.util:streamex:0.8.0'
+    implementation 'com.omarassadi:spring-toml-property-source:1.0.0'
+}
+
+test {
+    useJUnitPlatform()
+}
