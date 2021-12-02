@@ -3,28 +3,31 @@ package com.omarassadi.adventofcode.util.io.input.parser;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.List;
+import java.util.stream.DoubleStream;
+import java.util.stream.IntStream;
+import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
 @Configuration
 public class InputParserConfiguration {
 
     @Bean
-    public InputParser<List<String>> stringListInputParser() {
-        return input -> input.stream().toList();
+    public InputParser<Stream<String>> stringStreamInputParser() {
+        return input -> input;
     }
 
     @Bean
-    public InputParser<List<Integer>> integerListInputParser() {
-        return new MappingInputParser<>(Integer::parseInt);
+    public InputParser<IntStream> intStreamInputParser() {
+        return input -> input.mapToInt(Integer::parseInt);
     }
 
     @Bean
-    public InputParser<List<Long>> longListInputParser() {
-        return new MappingInputParser<>(Long::parseLong);
+    public InputParser<LongStream> longStreamInputParser() {
+        return input -> input.mapToLong(Long::parseLong);
     }
 
     @Bean
-    public InputParser<List<Double>> doubleListInputParser() {
-        return new MappingInputParser<>(Double::parseDouble);
+    public InputParser<DoubleStream> doubleStreamInputParser() {
+        return input -> input.mapToDouble(Double::parseDouble);
     }
 }

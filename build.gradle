@@ -19,8 +19,21 @@ dependencies {
     implementation 'one.util:streamex:0.8.0'
     implementation 'com.omarassadi:spring-toml-property-source:1.0.0'
     implementation 'org.javatuples:javatuples:1.2'
+    implementation 'com.google.guava:guava:31.0.1-jre'
 }
 
 test {
     useJUnitPlatform()
+}
+
+tasks.withType(JavaCompile).each {
+    it.options.compilerArgs.add('--enable-preview')
+}
+
+tasks.withType(Test) {
+    jvmArgs += "--enable-preview"
+}
+
+tasks.withType(JavaExec) {
+    jvmArgs += '--enable-preview'
 }

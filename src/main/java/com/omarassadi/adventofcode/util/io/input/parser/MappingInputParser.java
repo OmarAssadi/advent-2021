@@ -1,13 +1,11 @@
 package com.omarassadi.adventofcode.util.io.input.parser;
 
 import one.util.streamex.StreamEx;
-import org.springframework.cache.annotation.Cacheable;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Stream;
 
-public class MappingInputParser<T> implements InputParser<List<T>> {
+public class MappingInputParser<T> implements InputParser<Stream<T>> {
 
     private final Function<String, T> mapper;
 
@@ -16,8 +14,7 @@ public class MappingInputParser<T> implements InputParser<List<T>> {
     }
 
     @Override
-    @Cacheable("puzzleInput")
-    public List<T> parse(final Collection<String> input) {
-        return StreamEx.of(input).map(mapper).toList();
+    public Stream<T> parse(final Stream<String> input) {
+        return StreamEx.of(input).map(mapper);
     }
 }

@@ -24,25 +24,21 @@ public abstract class Day<T, V> {
         return day;
     }
 
-    public Collection<V> solve(final InputResolver resolver) {
-        return solve(parseInput(resolver.resolve(day)));
+    public InputParser<T> getInputParser() {
+        return inputParser;
     }
 
-    public Collection<V> solve(final T input) {
+    public Collection<V> solve(final InputResolver resolver) {
         final Collection<PuzzleSolution<T, V>> solutions = getSolutions();
         final StopWatch stopWatch = new StopWatch("Day %d".formatted(day));
         final Collection<V> results = StreamEx.of(solutions).zipWith(IntStream.rangeClosed(1, solutions.size())).map(solution -> {
             stopWatch.start("Part %d Solution".formatted(solution.getValue()));
-            final V result = solution.getKey().solve(input);
+            final V result = solution.getKey().solve(inputParser.parse(resolver.resolve(day)));
             stopWatch.stop();
             return result;
         }).toList();
         log.info(stopWatch.prettyPrint());
         return results;
-    }
-
-    public final T parseInput(final Collection<String> input) {
-        return inputParser.parse(input);
     }
 
     public abstract Collection<PuzzleSolution<T, V>> getSolutions();

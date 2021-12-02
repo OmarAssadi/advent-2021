@@ -1,9 +1,9 @@
 package com.omarassadi.adventofcode.util.io.input.parser;
 
-import java.util.Collection;
+import java.util.stream.Stream;
 
 @FunctionalInterface
 public interface InputParser<T> {
 
-    T parse(final Collection<String> input);
+    T parse(final Stream<String> input);
 }

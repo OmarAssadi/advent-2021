@@ -23,12 +23,12 @@ public class Day1IntegrationTest {
 
     @Test
     void partOneSolution_should_return_1681() {
-        assertEquals(1681, day1.partOneSolution().solve(day1.parseInput(resolver.resolve(day1.getDay()))));
+        assertEquals(1681, day1.partOneSolution().solve(day1.getInputParser().parse(resolver.resolve(day1.getDay()))));
     }
 
     @Test
     void partTwoSolution_should_return_1704() {
-        assertEquals(1704, day1.partTwoSolution().solve(day1.parseInput(resolver.resolve(day1.getDay()))));
+        assertEquals(1704, day1.partTwoSolution().solve(day1.getInputParser().parse(resolver.resolve(day1.getDay()))));
     }
 
     @Test

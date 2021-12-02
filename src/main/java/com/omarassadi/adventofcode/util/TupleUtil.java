@@ -11,7 +11,7 @@ import java.util.function.Predicate;
 public class TupleUtil {
 
     public static <A, B> Pair<A, B> applyIf(final Pair<A, B> pair, final Predicate<Pair<A, B>> predicate,
-                                                  final Function<Pair<A, B>, Pair<A, B>> finisher) {
+                                            final Function<Pair<A, B>, Pair<A, B>> finisher) {
         return predicate.test(pair) ? finisher.apply(pair) : pair;
     }
 
@@ -64,7 +64,7 @@ public class TupleUtil {
     }
 
     public static <A, B, C> Triplet<A, B, C> applyIf(final Triplet<A, B, C> triplet, final Predicate<Triplet<A, B, C>> predicate,
-                                                        final Function<Triplet<A, B, C>, Triplet<A, B, C>> finisher) {
+                                                     final Function<Triplet<A, B, C>, Triplet<A, B, C>> finisher) {
         return predicate.test(triplet) ? finisher.apply(triplet) : triplet;
     }
 

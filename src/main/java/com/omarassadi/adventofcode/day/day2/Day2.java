@@ -5,6 +5,8 @@ import com.omarassadi.adventofcode.day.PuzzleSolution;
 import com.omarassadi.adventofcode.util.StreamExUtil;
 import com.omarassadi.adventofcode.util.TupleUtil;
 import com.omarassadi.adventofcode.util.io.input.parser.InputParser;
+import com.omarassadi.adventofcode.util.math.Vector2;
+import com.omarassadi.adventofcode.util.math.Vector3;
 import lombok.experimental.ExtensionMethod;
 import one.util.streamex.StreamEx;
 import org.javatuples.Pair;
@@ -12,44 +14,35 @@ import org.javatuples.Triplet;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 @Component
 @ExtensionMethod({StreamEx.class, StreamExUtil.class, Pair.class, Triplet.class, TupleUtil.class})
-public class Day2 extends Day<List<Pair<String, Long>>, Long> {
+public class Day2 extends Day<Stream<Command>, Long> {
 
-    public Day2(final InputParser<List<Pair<String, Long>>> inputParser) {
+    public Day2(final InputParser<Stream<Command>> inputParser) {
         super(2, inputParser);
     }
 
     @Override
-    public List<PuzzleSolution<List<Pair<String, Long>>, Long>> getSolutions() {
+    public List<PuzzleSolution<Stream<Command>, Long>> getSolutions() {
         return List.of(
-            solution(false),
-            solution(true)
+            input -> solution(Vector2.ZERO).solve(input),
+            input -> solution(Vector3.ZERO).solve(input)
         );
     }
 
-    private PuzzleSolution<List<Pair<String, Long>>, Long> solution(final boolean aiming) {
-        return input -> StreamEx.of(input).foldLeftAndThen(new Triplet<>(0L, 0L, 0L), (position, command) -> switch (command.getValue0()) {
-            case "forward" -> position.plusAt0(command.getValue1()).applyIf(
-                pos -> aiming,
-                pos -> pos.plusAt1(pos.getValue2() * command.getValue1())
-            );
-            case "down" -> {
-                if (aiming) {
-                    yield position.plusAt2(command.getValue1());
-                } else {
-                    yield position.plusAt1(command.getValue1());
-                }
-            }
-            case "up" -> {
-                if (aiming) {
-                    yield position.minusAt2(command.getValue1());
-                } else {
-                    yield position.minusAt1(command.getValue1());
-                }
-            }
-            default -> position;
-        }, acc -> acc.getValue0() * acc.getValue1());
+    private PuzzleSolution<Stream<Command>, Long> solution(final Vector2 vector) {
+        return commands -> {
+            final var result = StreamEx.of(commands).foldLeft(vector, (position, command) -> command.apply(position));
+            return result.x() * result.y();
+        };
+    }
+
+    private PuzzleSolution<Stream<Command>, Long> solution(final Vector3 vector) {
+        return commands -> {
+            final var result = StreamEx.of(commands).foldLeft(vector, (position, command) -> command.apply(position));
+            return result.x() * result.y();
+        };
     }
 }

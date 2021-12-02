@@ -1,11 +1,11 @@
 package com.omarassadi.adventofcode.util.io.input.resolver;
 
-import org.springframework.cache.annotation.Cacheable;
+import lombok.SneakyThrows;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
+import java.util.stream.Stream;
 
 public class FileInputResolver implements InputResolver {
 
@@ -16,12 +16,8 @@ public class FileInputResolver implements InputResolver {
     }
 
     @Override
-    @Cacheable("puzzleInput")
-    public List<String> resolve(final int day) {
-        try {
-            return Files.readAllLines(basePath.resolve("day-%d.txt".formatted(day)));
-        } catch (final IOException e) {
-            throw new RuntimeException(e);
-        }
+    @SneakyThrows(IOException.class)
+    public Stream<String> resolve(final int day) {
+        return Files.lines(basePath.resolve("day-%d.txt".formatted(day)));
     }
 }
