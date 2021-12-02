@@ -1,5 +1,6 @@
 package com.omarassadi.adventofcode.util;
 
+import lombok.experimental.UtilityClass;
 import one.util.streamex.StreamEx;
 
 import java.util.Collections;
@@ -7,11 +8,8 @@ import java.util.List;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
+@UtilityClass
 public final class StreamExUtil {
-
-    private StreamExUtil() {
-
-    }
 
     private static <T> StreamEx<List<T>> window(final StreamEx<List<T>> input, final int size) {
         return input.headTail((head, tail) -> head.size() == size ? window(
