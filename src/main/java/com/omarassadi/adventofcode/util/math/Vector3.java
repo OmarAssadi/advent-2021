@@ -6,7 +6,7 @@ import lombok.With;
 @With
 public record Vector3(long x, long y, long z) {
 
-    public static Vector3 ZERO = new Vector3(0, 0, 0);
+    public static final Vector3 ZERO = new Vector3(0, 0, 0);
 
     @Builder(toBuilder = true)
     public Vector3 {
