@@ -24,12 +24,12 @@ public class AdventOfCodeApplication implements ApplicationRunner {
         this.days = days;
     }
 
+    public static void main(final String[] args) {
+        SpringApplication.run(AdventOfCodeApplication.class, args);
+    }
+
     @Override
     public void run(final ApplicationArguments args) {
         days.forEach(day -> log.info("Day {}: {}", day.getDay(), day.solve(inputResolver)));
-    }
-
-    public static void main(final String[] args) {
-        SpringApplication.run(AdventOfCodeApplication.class, args);
     }
 }

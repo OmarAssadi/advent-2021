@@ -1,5 +1,7 @@
-package com.omarassadi.adventofcode.day;
+package com.omarassadi.adventofcode.day.day1;
 
+import com.omarassadi.adventofcode.day.Day;
+import com.omarassadi.adventofcode.day.PuzzleSolution;
 import com.omarassadi.adventofcode.util.LongStreamExUtil;
 import com.omarassadi.adventofcode.util.StreamExUtil;
 import com.omarassadi.adventofcode.util.io.input.parser.InputParser;

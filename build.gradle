@@ -18,6 +18,7 @@ dependencies {
     testImplementation 'org.mockito:mockito-core:4.1.0'
     implementation 'one.util:streamex:0.8.0'
     implementation 'com.omarassadi:spring-toml-property-source:1.0.0'
+    implementation 'org.javatuples:javatuples:1.2'
 }
 
 test {

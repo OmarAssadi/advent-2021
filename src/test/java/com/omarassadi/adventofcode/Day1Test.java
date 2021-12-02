@@ -1,16 +1,13 @@
 package com.omarassadi.adventofcode;
 
-import com.omarassadi.adventofcode.day.Day1;
+import com.omarassadi.adventofcode.day.day1.Day1;
 import com.omarassadi.adventofcode.util.io.input.parser.InputParser;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@ExtendWith(MockitoExtension.class)
 public class Day1Test {
 
     private final List<Long> exampleInput = List.of(

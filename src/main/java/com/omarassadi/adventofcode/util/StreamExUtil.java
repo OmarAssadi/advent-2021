@@ -4,6 +4,7 @@ import one.util.streamex.StreamEx;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
 public final class StreamExUtil {
@@ -24,5 +25,10 @@ public final class StreamExUtil {
 
     public static <T> StreamEx<List<T>> windowed(final StreamEx<T> stream, final int size) {
         return stream.chain(windowed(size));
+    }
+
+    public static <U, T, R> R foldLeftAndThen(final StreamEx<T> stream, U seed, BiFunction<U, ? super T, U> accumulator, Function<U, R> finisher) {
+        final U value = stream.foldLeft(seed, accumulator);
+        return finisher.apply(value);
     }
 }

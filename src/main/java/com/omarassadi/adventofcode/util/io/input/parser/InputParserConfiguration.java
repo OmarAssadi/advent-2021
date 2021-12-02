@@ -9,6 +9,11 @@ import java.util.List;
 public class InputParserConfiguration {
 
     @Bean
+    public InputParser<List<String>> stringListInputParser() {
+        return input -> input.stream().toList();
+    }
+
+    @Bean
     public InputParser<List<Integer>> integerListInputParser() {
         return new MappingInputParser<>(Integer::parseInt);
     }

@@ -1,6 +1,6 @@
 package com.omarassadi.adventofcode;
 
-import com.omarassadi.adventofcode.day.Day1;
+import com.omarassadi.adventofcode.day.day1.Day1;
 import com.omarassadi.adventofcode.util.io.input.resolver.InputResolver;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
