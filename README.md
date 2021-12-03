@@ -6,10 +6,11 @@ Solutions for [Advent of Code 2021][aoc]. This project uses Java 17 and Spring B
 
 ## Progress
 
-| Day                                                                        | Part One | Part Two |
-|----------------------------------------------------------------------------|:--------:|:--------:|
-| ✔ [Day 1: Sonar Sweep](src/main/java/com/omarassadi/adventofcode/day/day1) |    🌟    |    🌟    |
-| ✔ [Day 2: Dive!](src/main/java/com/omarassadi/adventofcode/day/day2)       |    🌟    |    🌟    |
+| Day                                                                              | Part One | Part Two |
+|----------------------------------------------------------------------------------|:--------:|:--------:|
+| ✔ [Day 1: Sonar Sweep](src/main/java/com/omarassadi/adventofcode/day/day1)       |    🌟    |    🌟    |
+| ✔ [Day 2: Dive!](src/main/java/com/omarassadi/adventofcode/day/day2)             |    🌟    |    🌟    |
+| ✔ [Day 3: Binary Diagnostic](src/main/java/com/omarassadi/adventofcode/day/day3) |    🌟    |    🌟    |
 
 ## Acknowledgements
 
