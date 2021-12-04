@@ -6,8 +6,6 @@ import com.omarassadi.adventofcode.util.io.input.parser.InputParser;
 import it.unimi.dsi.fastutil.longs.LongOpenHashSet;
 import it.unimi.dsi.fastutil.longs.LongSet;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
-import one.util.streamex.LongStreamEx;
-import one.util.streamex.StreamEx;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -28,12 +26,15 @@ public class Day4 extends Day<Bingo, Long> {
     private PuzzleSolution<Bingo, Long> solution(final BiPredicate<LongSet, BingoBoard> takeBoard) {
         return bingo -> {
             final var drawnNumbers = new LongOpenHashSet();
-            return LongStreamEx.of(bingo.winningNumbers().longStream()).flatMapToObj(num -> {
-                drawnNumbers.add(num);
-                return StreamEx.of(bingo.boards()).findFirst(board ->
-                        takeBoard.test(drawnNumbers, board)).stream()
-                    .map(board -> board.sumIncompleteCells(drawnNumbers) * num);
-            }).findFirst().orElseThrow();
+            for (long number : bingo.winningNumbers()) {
+                drawnNumbers.add(number);
+                for (var board : bingo.boards()) {
+                    if (takeBoard.test(drawnNumbers, board)) {
+                        return board.sumIncompleteCells(drawnNumbers) * number;
+                    }
+                }
+            }
+            return 0L;
         };
     }
 
