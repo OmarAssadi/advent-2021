@@ -20,6 +20,7 @@ dependencies {
     implementation 'com.omarassadi:spring-toml-property-source:1.0.0'
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'it.unimi.dsi:fastutil:8.5.6'
+    implementation 'io.vavr:vavr:0.10.4'
 }
 
 test {
