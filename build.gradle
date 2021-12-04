@@ -15,12 +15,10 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    testImplementation 'org.mockito:mockito-core:4.1.0'
     implementation 'one.util:streamex:0.8.0'
     implementation 'com.omarassadi:spring-toml-property-source:1.0.0'
     implementation 'com.google.guava:guava:31.0.1-jre'
     implementation 'it.unimi.dsi:fastutil:8.5.6'
-    implementation 'io.vavr:vavr:0.10.4'
 }
 
 test {
