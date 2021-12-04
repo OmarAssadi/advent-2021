@@ -17,16 +17,16 @@ public class BingoInputParser implements InputParser<Bingo> {
         final var lines = input.toList();
         final var winningNumbers = new LongLinkedOpenHashSet(stringToLongs(lines.get(0), ","));
         final var boardSize = stringToCells(lines.get(2)).length;
-        final var boards = ObjectSet.of(StreamEx.ofSubLists(lines.stream().skip(2).filter(s -> !s.isBlank()).toList(), boardSize)
-            .map(rows -> {
-                final var grid = rows.stream().map(this::stringToCells).toList();
-                final var board = new long[boardSize * boardSize];
-                for (var y = 0; y < boardSize; y++) {
-                    var row = grid.get(y);
-                    System.arraycopy(row, 0, board, y * boardSize, boardSize);
-                }
-                return new BingoBoard(board);
-            }).toArray(BingoBoard[]::new));
+        final var boards = ObjectSet.of(StreamEx.ofSubLists(lines.stream().skip(2)
+            .filter(s -> !s.isBlank()).toList(), boardSize).map(rows -> {
+            final var grid = rows.stream().map(this::stringToCells).toList();
+            final var board = new long[boardSize * boardSize];
+            for (var y = 0; y < boardSize; y++) {
+                var row = grid.get(y);
+                System.arraycopy(row, 0, board, y * boardSize, boardSize);
+            }
+            return new BingoBoard(board);
+        }).toArray(BingoBoard[]::new));
         return new Bingo(winningNumbers, boards);
     }
 

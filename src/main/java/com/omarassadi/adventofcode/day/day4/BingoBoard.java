@@ -5,8 +5,10 @@ import it.unimi.dsi.fastutil.longs.LongSet;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
+import one.util.streamex.IntStreamEx;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 @ToString
 @EqualsAndHashCode
@@ -24,43 +26,25 @@ public final class BingoBoard {
     }
 
     public boolean hasBingo(final LongSet drawnNumbers) {
-        for (var column = 0; column < size; column++) {
-            if (isColumnSolved(drawnNumbers, column)) {
-                return true;
-            }
+        if (IntStream.range(0, size).anyMatch(c -> isColumnCompleted(drawnNumbers, c))) {
+            return true;
         }
-
-        for (var row = 0; row < size; row++) {
-            if (isRowSolved(drawnNumbers, row)) {
-                return true;
-            }
-        }
-        return false;
+        return IntStream.range(0, size).anyMatch(r -> isRowCompleted(drawnNumbers, r));
     }
 
-    public boolean isColumnSolved(final LongSet drawnNumbers, final int column) {
-        var solved = 0;
-        for (var cell = column; cell < cells.length; cell += size) {
-            if (drawnNumbers.contains(cells[cell])) {
-                solved++;
-            }
-        }
-        return solved == size;
+    public boolean isColumnCompleted(final LongSet drawnNumbers, final int column) {
+        return IntStreamEx.range(column, cells.length, size)
+            .mapToObj(cell -> drawnNumbers.contains(cells[cell]))
+            .allMatch(cellComplete -> cellComplete);
     }
 
-    public boolean isRowSolved(final LongSet drawnNumbers, final int row) {
-        final var start = size * row;
-        final var end = start + size;
-        var solved = 0;
-        for (var cell = start; cell < end; cell++) {
-            if (drawnNumbers.contains(cells[cell])) {
-                solved++;
-            }
-        }
-        return solved == size;
+    public boolean isRowCompleted(final LongSet drawnNumbers, final int row) {
+        return IntStream.range(size * row, size * row + size)
+            .mapToObj(cell -> drawnNumbers.contains(cells[cell]))
+            .allMatch(cellComplete -> cellComplete);
     }
 
-    public long sumUnmarkedCells(final LongSet drawnNumbers) {
+    public long sumIncompleteCells(final LongSet drawnNumbers) {
         return Arrays.stream(cells).filter(cell -> !drawnNumbers.contains(cell)).sum();
     }
 }
