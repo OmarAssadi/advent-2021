@@ -11,8 +11,10 @@ Solutions for [Advent of Code 2021][aoc]. This project uses Java 17 and Spring B
 | ✔ [Day 1: Sonar Sweep](src/main/java/com/omarassadi/adventofcode/day/day1)       |    🌟    |    🌟    |
 | ✔ [Day 2: Dive!](src/main/java/com/omarassadi/adventofcode/day/day2)             |    🌟    |    🌟    |
 | ✔ [Day 3: Binary Diagnostic](src/main/java/com/omarassadi/adventofcode/day/day3) |    🌟    |    🌟    |
+| ✔ [Day 4: Giant Squid](src/main/java/com/omarassadi/adventofcode/day/day4)       |    🌟    |    🌟    |
 
 ## Acknowledgements
 
 * [Arham Siddiqui](https://github.com/Arham4) - Stole the idea of the progress table
-* [Michael Bull](https://github.com/michaelbull) - Inspiration for day 2
+* [Michael Bull](https://github.com/michaelbull) - Inspiration for day 2, hints for day 
+flagging cells
