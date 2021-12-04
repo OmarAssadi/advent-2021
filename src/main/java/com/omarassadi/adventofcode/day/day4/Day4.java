@@ -24,7 +24,7 @@ public class Day4 extends Day<Bingo, Long> {
 
     private PuzzleSolution<Bingo, Long> partOneSolution() {
         return bingo -> {
-            var drawnNumbers = new LongOpenHashSet();
+            final var drawnNumbers = new LongOpenHashSet();
             for (long number : bingo.winningNumbers()) {
                 drawnNumbers.add(number);
                 for (var board : bingo.boards()) {
@@ -39,8 +39,8 @@ public class Day4 extends Day<Bingo, Long> {
 
     private PuzzleSolution<Bingo, Long> partTwoSolution() {
         return bingo -> {
-            var drawnNumbers = new LongLinkedOpenHashSet();
-            var winners = new ObjectOpenHashSet<BingoBoard>();
+            final var drawnNumbers = new LongLinkedOpenHashSet();
+            final var winners = new ObjectOpenHashSet<BingoBoard>();
             for (long number : bingo.winningNumbers()) {
                 drawnNumbers.add(number);
                 for (var board : bingo.boards()) {

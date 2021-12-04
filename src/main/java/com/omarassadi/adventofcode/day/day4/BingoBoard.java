@@ -10,7 +10,7 @@ import java.util.Arrays;
 
 @ToString
 @EqualsAndHashCode
-public class BingoBoard {
+public final class BingoBoard {
 
     private final long[] cells;
     @Getter
@@ -25,20 +25,20 @@ public class BingoBoard {
 
     public boolean hasBingo(final LongSet drawnNumbers) {
         for (var column = 0; column < size; column++) {
-            if (columnSolved(drawnNumbers, column)) {
+            if (isColumnSolved(drawnNumbers, column)) {
                 return true;
             }
         }
 
         for (var row = 0; row < size; row++) {
-            if (rowSolved(drawnNumbers, row)) {
+            if (isRowSolved(drawnNumbers, row)) {
                 return true;
             }
         }
         return false;
     }
 
-    public boolean columnSolved(final LongSet drawnNumbers, final int column) {
+    public boolean isColumnSolved(final LongSet drawnNumbers, final int column) {
         var solved = 0;
         for (var cell = column; cell < cells.length; cell += size) {
             if (drawnNumbers.contains(cells[cell])) {
@@ -48,7 +48,7 @@ public class BingoBoard {
         return solved == size;
     }
 
-    public boolean rowSolved(final LongSet drawnNumbers, final int row) {
+    public boolean isRowSolved(final LongSet drawnNumbers, final int row) {
         final var start = size * row;
         final var end = start + size;
         var solved = 0;
