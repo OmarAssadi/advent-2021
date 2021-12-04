@@ -1,10 +1,8 @@
 package com.omarassadi.adventofcode.day.day4;
 
-import com.omarassadi.adventofcode.util.StreamExUtil;
 import com.omarassadi.adventofcode.util.io.input.parser.InputParser;
 import it.unimi.dsi.fastutil.longs.LongLinkedOpenHashSet;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
-import lombok.experimental.ExtensionMethod;
 import one.util.streamex.StreamEx;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +10,6 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 @Component
-@ExtensionMethod({StreamExUtil.class})
 public class BingoInputParser implements InputParser<Bingo> {
 
     @Override
