@@ -38,6 +38,6 @@ public class Day5 extends Day<Stream<Path>, Long> {
         return input -> LongStreamEx.of(StreamEx.of(input).filter(takePath)
                 .flatMap(path -> StreamEx.of(path.getSteps()))
                 .groupingBy(Function.identity(), Collectors.counting()).values())
-            .filter(freq -> freq > 1).count();
+            .greater(1).count();
     }
 }
