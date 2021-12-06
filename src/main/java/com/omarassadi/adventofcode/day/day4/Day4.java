@@ -23,6 +23,18 @@ public class Day4 extends Day<Bingo, Long> {
         return List.of(partOneSolution(), partTwoSolution());
     }
 
+    private PuzzleSolution<Bingo, Long> partOneSolution() {
+        return bingo -> solution((drawn, board) -> board.hasBingo(drawn)).solve(bingo);
+    }
+
+    private PuzzleSolution<Bingo, Long> partTwoSolution() {
+        return bingo -> {
+            final var winners = new ObjectOpenHashSet<BingoBoard>();
+            return solution((drawn, board) -> board.hasBingo(drawn) && winners.add(board)
+                && winners.size() == bingo.boards().size()).solve(bingo);
+        };
+    }
+
     private PuzzleSolution<Bingo, Long> solution(final BiPredicate<LongSet, BingoBoard> takeBoard) {
         return bingo -> {
             final var drawnNumbers = new LongOpenHashSet();
@@ -35,18 +47,6 @@ public class Day4 extends Day<Bingo, Long> {
                 }
             }
             return 0L;
-        };
-    }
-
-    private PuzzleSolution<Bingo, Long> partOneSolution() {
-        return bingo -> solution((drawn, board) -> board.hasBingo(drawn)).solve(bingo);
-    }
-
-    private PuzzleSolution<Bingo, Long> partTwoSolution() {
-        return bingo -> {
-            final var winners = new ObjectOpenHashSet<BingoBoard>();
-            return solution((drawn, board) -> board.hasBingo(drawn) && winners.add(board)
-                && winners.size() == bingo.boards().size()).solve(bingo);
         };
     }
 }

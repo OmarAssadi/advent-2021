@@ -2,7 +2,6 @@ package com.omarassadi.adventofcode.util;
 
 import lombok.experimental.ExtensionMethod;
 import lombok.experimental.UtilityClass;
-import one.util.streamex.AbstractStreamEx;
 import one.util.streamex.StreamEx;
 
 import java.util.Collections;

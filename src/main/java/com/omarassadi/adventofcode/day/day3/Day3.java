@@ -22,10 +22,6 @@ public class Day3 extends Day<Stream<String>, Long> {
         return List.of(partOneSolution(), partTwoSolution());
     }
 
-    private long countOnes(final List<String> lines, final int index) {
-        return lines.stream().mapToLong(l -> l.charAt(index) == '1' ? 1 : -1).sum();
-    }
-
     private PuzzleSolution<Stream<String>, Long> partOneSolution() {
         return input -> {
             final var lines = input.toList();
@@ -52,5 +48,9 @@ public class Day3 extends Day<Stream<String>, Long> {
                 );
             return Long.parseLong(result.getKey().get(0), 2) * Long.parseLong(result.getValue().get(0), 2);
         };
+    }
+
+    private long countOnes(final List<String> lines, final int index) {
+        return lines.stream().mapToLong(l -> l.charAt(index) == '1' ? 1 : -1).sum();
     }
 }
