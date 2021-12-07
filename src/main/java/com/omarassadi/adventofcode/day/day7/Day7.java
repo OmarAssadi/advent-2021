@@ -3,15 +3,12 @@ package com.omarassadi.adventofcode.day.day7;
 import com.omarassadi.adventofcode.day.Day;
 import com.omarassadi.adventofcode.day.PuzzleSolution;
 import com.omarassadi.adventofcode.util.io.input.parser.InputParser;
-import lombok.val;
 import one.util.streamex.LongStreamEx;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.function.Function;
-import java.util.stream.IntStream;
-import java.util.stream.LongStream;
 
 @Component
 public class Day7 extends Day<List<Long>, Long> {
@@ -30,11 +27,9 @@ public class Day7 extends Day<List<Long>, Long> {
     }
 
     private PuzzleSolution<List<Long>, Long> solution(Function<Long, Long> distance) {
-        return input -> LongStreamEx.of(input).max().stream()
-            .flatMap(max -> LongStream.range(0, max))
-            .map(pos -> input.stream().mapToLong(crab ->
-                    distance.apply(Math.abs(pos - crab)))
-                .sum()).min().orElseThrow();
+        return input -> LongStreamEx.of(input).max().stream().flatMap(LongStreamEx::range).map(pos ->
+            input.stream().mapToLong(crab -> distance.apply(Math.abs(pos - crab))).sum()
+        ).min().orElseThrow();
     }
 
     private PuzzleSolution<List<Long>, Long> partOneSolution() {
