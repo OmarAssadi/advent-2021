@@ -19,7 +19,7 @@ public class Day7 extends Day<List<Long>, Long> {
     }
 
     @Override
-    public Collection<PuzzleSolution<List<Long>, Long>> getSolutions() {
+    public List<PuzzleSolution<List<Long>, Long>> getSolutions() {
         return List.of(
             partOneSolution(),
             partTwoSolution()
