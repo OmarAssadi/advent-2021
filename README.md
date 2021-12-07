@@ -6,14 +6,15 @@ Solutions for [Advent of Code 2021][aoc]. This project uses Java 17 and Spring B
 
 ## Progress
 
-| Day                                                                                 | Part One | Part Two |
-|-------------------------------------------------------------------------------------|:--------:|:--------:|
-| ✔ [Day 1: Sonar Sweep](src/main/java/com/omarassadi/adventofcode/day/day1)          |    🌟    |    🌟    |
-| ✔ [Day 2: Dive!](src/main/java/com/omarassadi/adventofcode/day/day2)                |    🌟    |    🌟    |
-| ✔ [Day 3: Binary Diagnostic](src/main/java/com/omarassadi/adventofcode/day/day3)    |    🌟    |    🌟    |
-| ✔ [Day 4: Giant Squid](src/main/java/com/omarassadi/adventofcode/day/day4)          |    🌟    |    🌟    |
-| ✔ [Day 5: Hydrothermal Venture](src/main/java/com/omarassadi/adventofcode/day/day5) |    🌟    |    🌟    |
-| ✔ [Day 6: Lanternfish](src/main/java/com/omarassadi/adventofcode/day/day6)          |    🌟    |    🌟    |
+| Day                                                                                    | Part One | Part Two |
+|----------------------------------------------------------------------------------------|:--------:|:--------:|
+| ✔ [Day 1: Sonar Sweep](src/main/java/com/omarassadi/adventofcode/day/day1)             |    🌟    |    🌟    |
+| ✔ [Day 2: Dive!](src/main/java/com/omarassadi/adventofcode/day/day2)                   |    🌟    |    🌟    |
+| ✔ [Day 3: Binary Diagnostic](src/main/java/com/omarassadi/adventofcode/day/day3)       |    🌟    |    🌟    |
+| ✔ [Day 4: Giant Squid](src/main/java/com/omarassadi/adventofcode/day/day4)             |    🌟    |    🌟    |
+| ✔ [Day 5: Hydrothermal Venture](src/main/java/com/omarassadi/adventofcode/day/day5)    |    🌟    |    🌟    |
+| ✔ [Day 6: Lanternfish](src/main/java/com/omarassadi/adventofcode/day/day6)             |    🌟    |    🌟    |
+| ✔ [Day 7: The Treachery of Whales](src/main/java/com/omarassadi/adventofcode/day/day7) |    🌟    |    🌟    |
 
 ## Acknowledgements
 
